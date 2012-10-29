@@ -7,6 +7,8 @@ astah UML, professionalの何れかにインストールして利用します。
 
 ![ScreenShot](https://raw.github.com/shoito/astah-cacoo-plugin/master/images/astah-cacoo.png)
 
+Backlogの課題を確認/作成/編集ができるastahプラグイン、Backlog Connector for Astahは[こちら](https://github.com/shoito/backlog-connector-for-astah)
+
 インストール
 ---
 [こちらのページ](https://github.com/shoito/astah-cacoo-plugin/downloads)から **[cacoo2astah-x.x.x.jar](https://github.com/downloads/shoito/astah-cacoo-plugin/cacoo2astah-0.1.0.jar)** ファイルをダウンロードし、`astahのインストールフォルダ/plugins/`にコピーしてastahを再起動します。
