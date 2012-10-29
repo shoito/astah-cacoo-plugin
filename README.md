@@ -4,6 +4,7 @@ Cacooインポートプラグイン
 [Cacoo](http://cacoo.com/)で作成した図をastahの図上にドラッグ＆ドロップで取り込めるastahプラグインです。
 
 astah UML, professionalの何れかにインストールして利用します。
+![ScreenShot](images/astah-cacoo.png)
 
 インストール
 ---
