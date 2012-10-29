@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <extension point="com.change_vision.astah.ui.actionSets">
+      <actionSet
+            label="%action_set_label"
+            visible="true"
+            id="com.github.astah.cacoo2astah.actionSet">
+         <action
+			   label="%menu_label"
+               class="com.github.astah.cacoo2astah.action.LoadImageAction"
+               tooltip="%menu_tooltip"
+               menubarPath="tool/xmi"
+               id="cacoo2astah">
+         </action>
+     </actionSet>
+   </extension>
+</plugin>
