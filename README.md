@@ -36,11 +36,11 @@ Backlogの課題を確認/作成/編集ができるastahプラグイン、Backlo
 
 Thanks!
 ---
-![Cacoo Logo](https://cacoo.com/img/downloads/PNGCacoo.png)
+![Cacoo Logo](https://raw.github.com/shoito/astah-cacoo-plugin/master/images/CacooLogo.png)
 >CacooはWebブラウザ上で簡単にサイトマップやワイアーフレーム、UML、ネットワーク図などの図が作成できるドローツール。
 <http://cacoo.com>
 
-![Astah Logo](http://astah.net/Resources/Images/main/AstahLogo.png)
+![Astah Logo](https://raw.github.com/shoito/astah-cacoo-plugin/master/images/AstahLogo.png)
 >astah* は、ソフトウェア開発で活用されている UML, ER図, DFD, CRUDなどの図を軽快な操作でモデリングする設計支援ツール。
 <http://astah.change-vision.com>
 
