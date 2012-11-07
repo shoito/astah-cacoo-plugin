@@ -3,7 +3,7 @@ Cacooインポートプラグイン
 
 [Cacoo](http://cacoo.com/)で作成した図をastahの図上にドラッグ＆ドロップで取り込めるastahプラグインです。
 
-astah UML, professionalの何れかにインストールして利用します。
+[astah UML](http://astah.change-vision.com/ja/product/astah-uml.html), [professional](http://astah.change-vision.com/ja/product/astah-professional.html)の何れかにインストールして利用します。
 
 ![ScreenShot](https://raw.github.com/shoito/astah-cacoo-plugin/master/images/astah-cacoo.png)
 
@@ -33,6 +33,16 @@ Backlogの課題を確認/作成/編集ができるastahプラグイン、Backlo
 フィードバック
 ---
 感想、要望、不具合などありましたら [@shoito](http://twitter.com/shoito) へツイートいただけると嬉しいです。
+
+Thanks!
+---
+![Cacoo Logo](https://cacoo.com/img/downloads/PNGCacoo.png)
+>CacooはWebブラウザ上で簡単にサイトマップやワイアーフレーム、UML、ネットワーク図などの図が作成できるドローツール。
+<http://cacoo.com>
+
+![Astah Logo](http://astah.net/Resources/Images/main/AstahLogo.png)
+>astah* は、ソフトウェア開発で活用されている UML, ER図, DFD, CRUDなどの図を軽快な操作でモデリングする設計支援ツール。
+<http://astah.change-vision.com>
 
 License
 ---
