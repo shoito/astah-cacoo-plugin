@@ -45,7 +45,7 @@ public class CacooClient {
 		
 		String responseText = "";
 		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-			responseText = byteArrayOutputStream.toString();
+			responseText = byteArrayOutputStream.toString("UTF-8");
 		}
 		
 		byteArrayOutputStream.close();
@@ -55,7 +55,7 @@ public class CacooClient {
 	
 	public JSONArray getDiagrams() {
 		String url = "https://cacoo.com/api/v1/diagrams.json?apiKey=" + apiKey;
-		JSONArray diagrams = null;
+		JSONArray diagrams = new JSONArray();
 		try {
 			JSONObject result = new JSONObject(doGet(url));
 			diagrams = result.getJSONArray("result");
@@ -69,7 +69,7 @@ public class CacooClient {
 	
 	public JSONArray getSheets(String diagramId) {
 		String url = "https://cacoo.com/api/v1/diagrams/" + diagramId + ".json?apiKey=" + apiKey;
-		JSONArray sheets = null;
+		JSONArray sheets = new JSONArray();
 		try {
 			JSONObject result = new JSONObject(doGet(url));
 			sheets = result.getJSONArray("sheets");

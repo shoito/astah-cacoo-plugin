@@ -27,6 +27,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,8 +60,15 @@ public class DiagramViewer extends JFrame {
 	}
 	
 	public DiagramViewer(Frame parent) {
+		String apiKey = getAPIKey();
+		client = new CacooClient(apiKey);
+		if (StringUtils.isBlank(apiKey)) {
+			showAPIKeyInputDialog();
+		}
+		
 		initComponents();
 		setLocationRelativeTo(parent);
+		
 		getDiagrams();
 	}
 	
@@ -110,7 +118,6 @@ public class DiagramViewer extends JFrame {
 	private void initComponents() {
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
-		client = new CacooClient(getAPIKey());
 		diagramListModel = new DefaultListModel();
 		
 		JSplitPane baseSplitPane = new JSplitPane();
@@ -153,6 +160,28 @@ public class DiagramViewer extends JFrame {
 		setSize(640, 480);
 	}
 
+	private void showAPIKeyInputDialog() {
+		String apiKey = JOptionPane.showInputDialog("下記ページで表示されるAPIキーを入力してください.\nhttps://cacoo.com/profile/api");
+
+		if (apiKey == null) {
+		} else {
+			Properties prop = new Properties();
+			try {
+				File propertyFile = new File(homeEditionDir, PROPERTY_FILE_NAME);
+				if (!propertyFile.exists()) {
+					propertyFile.createNewFile();
+				}
+				prop.load(new FileInputStream(propertyFile));
+				prop.setProperty("api_key", apiKey);
+				prop.store(new FileOutputStream(propertyFile), null); 
+				client.setAPIKey(apiKey);
+				getDiagrams();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	class DiagramListSelectionListener implements ListSelectionListener {
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
@@ -169,25 +198,7 @@ public class DiagramViewer extends JFrame {
 	class SettingButtonMouseListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent mouseevent) {
-			String apiKey = JOptionPane.showInputDialog("下記ページで表示されるAPIキーを入力してください.\nhttps://cacoo.com/profile/api");
-
-			if (apiKey == null) {
-			} else {
-				Properties prop = new Properties();
-				try {
-					File propertyFile = new File(homeEditionDir, PROPERTY_FILE_NAME);
-					if (!propertyFile.exists()) {
-						propertyFile.createNewFile();
-					}
-					prop.load(new FileInputStream(propertyFile));
-					prop.setProperty("api_key", apiKey);
-					prop.store(new FileOutputStream(propertyFile), null); 
-					client.setAPIKey(apiKey);
-					getDiagrams();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			showAPIKeyInputDialog();
 		}
 	}
 	
