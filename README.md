@@ -11,7 +11,7 @@ Backlogの課題を確認/作成/編集ができるastahプラグイン、Backlo
 
 インストール
 ---
-[こちらのページ](https://github.com/shoito/astah-cacoo-plugin/downloads)から **[cacoo2astah-x.x.x.jar](https://github.com/downloads/shoito/astah-cacoo-plugin/cacoo2astah-0.1.0.jar)** ファイルをダウンロードし、`astahのインストールフォルダ/plugins/`にコピーしてastahを再起動します。
+[こちらのページ](https://github.com/shoito/astah-cacoo-plugin/tree/master/target)から **[cacoo2astah-x.x.x.jar](https://github.com/shoito/astah-cacoo-plugin/blob/master/target/cacoo2astah-0.1.3.jar?raw=true)** ファイルをダウンロードし、`astahのインストールフォルダ/plugins/`にコピーしてastahを再起動します。
 
 ### astahバージョン6.6以上のインストール
 この辺から各OS用のインストーラーをダウンロードして、実行します。
