@@ -8,13 +8,17 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DropTargetDragEvent;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.dnd.DropTargetEvent;
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Set;
+
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 import com.change_vision.jude.api.inf.editor.ClassDiagramEditor;
 import com.change_vision.jude.api.inf.exception.InvalidEditingException;
 import com.change_vision.jude.api.inf.model.IDiagram;
 import com.change_vision.jude.api.inf.view.DiagramDropTargetListener;
+import com.change_vision.jude.api.inf.view.IDiagramViewManager;
 import com.github.astah.cacoo2astah.util.AstahAPIUtils;
 
 public final class DiagramDropExtension extends DiagramDropTargetListener {
@@ -39,7 +43,7 @@ public final class DiagramDropExtension extends DiagramDropTargetListener {
 		try {
 			Image image = (Image) transferable
 					.getTransferData(DataFlavor.imageFlavor);
-			createImage(image, dtde.getLocation());
+			createImage(image, getLocation(dtde));
 			dtde.dropComplete(true);
 		} catch (UnsupportedFlavorException e) {
 			e.printStackTrace();
@@ -61,6 +65,28 @@ public final class DiagramDropExtension extends DiagramDropTargetListener {
 			e.printStackTrace();
 			utils.getProjectAccessor().getTransactionManager().abortTransaction();
 		}
+	}
+	
+	private Point getLocation(DropTargetDropEvent dtde) {
+		Point location = dtde.getLocation();
+		if (canUseToWorldCoordAPI()) {
+			IDiagramViewManager viewManager = utils.getDiagramViewManager();
+			Point2D worldCoordLocation = viewManager.toWorldCoord(location.x, location.y);
+			location = new Point((int) worldCoordLocation.getX(), (int) worldCoordLocation.getY());
+		}
+		
+		return location;
+	}
+	
+	private int compareAstahAPIVersionTo(String target) {
+		String astahAPIVersionStr = utils.getProjectAccessor().getAstahAPIVersion();
+		DefaultArtifactVersion astahAPIVersion = new DefaultArtifactVersion(astahAPIVersionStr);
+		DefaultArtifactVersion targetVersion = new DefaultArtifactVersion(target);
+		return astahAPIVersion.compareTo(targetVersion);
+	}
+	
+	private boolean canUseToWorldCoordAPI() {
+		return compareAstahAPIVersionTo("6.6.4") >= 0;
 	}
 
 	@Override
