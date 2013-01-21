@@ -26,7 +26,7 @@ import com.github.astah.cacoo2astah.updater.NotificationPopup.Position;
 
 public class AutoUpdater {
 	private static final Logger logger = LoggerFactory.getLogger(AutoUpdater.class);
-	private String updateXml = "https://github.com/downloads/shoito/astah-cacoo-plugin/update.xml";
+	private String updateXml = "https://raw.github.com/shoito/astah-cacoo-plugin/master/update.xml";
 	
 	public void check() throws IOException {
 		HttpClient client = new DefaultHttpClient();
